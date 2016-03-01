@@ -18,6 +18,13 @@ angular.module("imc").controller("ctrl", function ($scope, rest){
 		});
 	};
 
+	$scope.cadastrar = function(values){
+		$scope.resultado = (values.peso / (values.altura*values.altura));
+		$scope.msg = "morreu";
+		$scope.alertar = true;
+		var pessoa = {nome: values.nome, peso: values.peso, altura: values.altura, imc: $scope.resultado, status: $scope.msg};
+	}; 
+
 	carregarDados();
 
 

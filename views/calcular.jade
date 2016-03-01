@@ -1,3 +1,66 @@
 extends layout
 
 block content
+	div(ng-app="imc" ng-controller="ctrl")
+		div.col-md-4.col-md-offset-2(style="margin-top:3em;")
+			div.panel.panel-info
+				div.panel-heading Calculando o IMC
+				div.panel-body
+					div.input-group
+						span.input-group-addon#basic-addon1 
+							b Nome:
+						input.form-control(type="text" ng-model="pessoa.nome")
+					br
+
+					div.input-group
+						span.input-group-addon#basic-addon1 
+							b Peso:
+						input.form-control(type="text" ng-model="pessoa.peso")
+						span.input-group-addon Kg
+					br
+
+					div.input-group
+						span.input-group-addon#basic-addon1 
+							b Altura:
+						input.form-control(type="text" ng-model="pessoa.altura")
+						span.input-group-addon Metros
+					br
+
+				div.panel-footer
+					div.col-md-offset-10
+						button.btn.btn-info(type="button" ng-click="cadastrar(pessoa)") Calcular
+
+			div.alert.alert-info(role="alert" ng-show="alertar") 
+				a.close(ng-click="alertar=false") &times;
+				h5 Valor do IMC igual a : 
+					b {{resultado | limitTo:5}}
+				h5 {{msg}}
+
+
+
+		div.col-md-4.col-md-offset-1(style="margin-top:3em;")
+			table.table.table-striped
+				tr 
+					th Resultado
+					th Status
+				tr
+					td Abaixo de 17
+					td Muito abaixo do peso
+				tr
+					td Entre 17 e 18,49
+					td Abaixo do peso
+				tr
+					td Entre 18,5 e 24,99
+					td Peso normal
+				tr
+					td Entre 25 e 29,99
+					td Acima do peso
+				tr
+					td Entre 30 e 34,99
+					td Obesidade I
+				tr
+					td Entre 35 e 39,99
+					td Obesidade II (severa)
+				tr
+					td Acima de 40
+					td Obesidade III (mórbida)	
