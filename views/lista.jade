@@ -12,7 +12,7 @@ block content
 				br
 
 		div.col-md-1.col-md-offset-9
-			button.btn.btn-default(type="button" style="position:relative;top:3em;") Gerar PDF
+			button.btn.btn-default(type="button" style="position:relative;top:3em;" ng-click="exportar()" target="_blank") Gerar PDF
 		div.col-md-5.col-md-offset-2
 			input(type="text" class="form-control" ng-model="buscar" placeholder="Pesquisar por nome...")
 			br
@@ -26,8 +26,8 @@ block content
 					th Valor do IMC
 					th Status
 				tr(ng-repeat="valor in valores | filter:{nome:buscar}")
-					td {{valor.nome}}
-					td {{valor.peso}}
-					td {{valor.altura}}
+					td {{valor.nome}} 
+					td {{valor.peso}} Kg
+					td {{valor.altura}} m
 					td {{valor.imc | limitTo:5}}
 					td {{valor.status}}
