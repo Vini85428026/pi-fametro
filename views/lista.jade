@@ -2,7 +2,7 @@ extends layout
 
 block content
 	div(ng-app="imc" ng-controller="ctrl")
-		div.col-md-2.col-md-offset-11(style="margin-top:2em;")
+		div.col-md-2.col-md-offset-1(style="margin-top:2em;position:relative;left:75%;")
 			a(href="#" ng-click="logout()" style="text-decoration:none;color:black;") Sair
 				img(src="/images/close.png" style="position:relative;left:3px;")
 
@@ -10,8 +10,9 @@ block content
 			h3
 				i Lista de Pacientes
 				br
-				br
 
+		div.col-md-1.col-md-offset-9
+			button.btn.btn-default(type="button" style="position:relative;top:3em;") Gerar PDF
 		div.col-md-5.col-md-offset-2
 			input(type="text" class="form-control" ng-model="buscar" placeholder="Pesquisar por nome...")
 			br
