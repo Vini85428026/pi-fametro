@@ -37,4 +37,23 @@ router.list = function(req,res){
 	});
 };
 
+router.salvar = function(req, res){
+
+	var valores = {
+		nome: req.body.nome,
+		peso: req.body.peso,
+		altura: req.body.altura,
+		imc: req.body.imc,
+		status: req.body.status
+	};
+
+	connection.query("INSERT INTO dados SET ?", valores, function(err, result){
+		if(err){
+			console.error(err);
+			return;
+		}
+		res.json(result);
+	});
+};
+
 module.exports = router;

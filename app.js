@@ -23,8 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-
+app.use(bodyParser());
 app.get('/lista/listagem', routes.list);
+app.post('/lista/salvar', routes.salvar);
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');

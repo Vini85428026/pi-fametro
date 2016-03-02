@@ -2,7 +2,10 @@ extends layout
 
 block content
 	div(ng-app="imc" ng-controller="ctrl")
-		
+		div.col-md-2.col-md-offset-11(style="margin-top:2em;")
+			a(href="#" ng-click="logout()" style="text-decoration:none;color:black;") Sair
+				img(src="/images/close.png" style="position:relative;left:3px;")
+
 		div.col-md-5.col-md-offset-5
 			h3
 				i Lista de Pacientes
@@ -21,9 +24,9 @@ block content
 					th Altura
 					th Valor do IMC
 					th Status
-				tr(ng-repeat="valor in valores")
+				tr(ng-repeat="valor in valores | filter:{nome:buscar}")
 					td {{valor.nome}}
 					td {{valor.peso}}
 					td {{valor.altura}}
-					td {{valor.imc}}
+					td {{valor.imc | limitTo:5}}
 					td {{valor.status}}
